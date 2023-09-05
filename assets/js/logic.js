@@ -1,7 +1,8 @@
 //variables
 let startQuizBtn = document.querySelector('#start');
 let timeEl = document.querySelector('#time');
-let timeLimit = 60;
+let numberOfQuestions = 5;
+let timeLimit = (((numberOfQuestions * 10)+10));
 let startDiv = document.querySelector('#start-screen');
 let questionDiv = document.querySelector('#questions');
 let endDiv = document.querySelector('#end-screen');
