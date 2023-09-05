@@ -6,19 +6,26 @@ let timeLimit = 60;
 //functions
 //timer
 function timer() {
-    let timeInterval = setInterval(function() {
+    let timerInterval = setInterval(function() {
 
-    timeEl.textContent = timeLimit;
-    timeLimit--;
+        timeEl.textContent = timeLimit;
 
-    }, 1000);
+        if (timeLimit === 0) {
+            clearInterval(timerInterval);
+            console.log(`time up!`); //TODO rm
+            //TODO jump to end
+        }
+
+        timeLimit--;
+
+    }, 10);
 }
 
 //event listeners
 startQuizBtn.addEventListener('click', function() {
-    console.log(`start button pressed`);
+    console.log(`start button pressed`); //TODO rm
     //TODO - show first question
-    //TODO - start timer
+    timer();
 });
 
 //start quiz screen
@@ -40,7 +47,7 @@ startQuizBtn.addEventListener('click', function() {
 //High score page with clear button
 
 //tests
-//timer();
+
 
 
 
