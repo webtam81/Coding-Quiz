@@ -5,10 +5,14 @@ let timeLimit = 60;
 
 //functions
 //timer
-let timer = setInterval(function() {
+function timer() {
+    let timeInterval = setInterval(function() {
+
     timeEl.textContent = timeLimit;
     timeLimit--;
-}, 1000);
+
+    }, 1000);
+}
 
 //event listeners
 startQuizBtn.addEventListener('click', function() {
@@ -35,8 +39,8 @@ startQuizBtn.addEventListener('click', function() {
 
 //High score page with clear button
 
-
-
+//tests
+//timer();
 
 
 
