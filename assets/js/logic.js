@@ -2,6 +2,9 @@
 let startQuizBtn = document.querySelector('#start');
 let timeEl = document.querySelector('#time');
 let timeLimit = 60;
+let startDiv = document.querySelector('#start-screen');
+let questionDiv = document.querySelector('#questions');
+let endDiv = document.querySelector('#end-screen');
 
 //functions
 //timer
@@ -18,23 +21,25 @@ function timer() {
 
         timeLimit--;
 
-    }, 10);
+    }, 1000);
+    //}, 10);//TODO rm
 }
 
 //event listeners
 startQuizBtn.addEventListener('click', function() {
     console.log(`start button pressed`); //TODO rm
-    //TODO - show first question
+    startDiv.classList.add('hide');
+    questionDiv.classList.remove('hide');
     timer();
 });
 
-//start quiz screen
 
+//start quiz screenr
 //start timer - 60s
 
 //first question
 
-//buttons for answer
+//buttons for answers
 
 //if wrong, decuct time, show message
 
