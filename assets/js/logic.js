@@ -41,7 +41,7 @@ startQuizBtn.addEventListener('click', function() {
 
 //buttons for answers
 
-//if wrong, decuct time, show message
+//if wrong, decuct time, show message, proceed
 
 //if correct, show message?, proceed
 
