@@ -74,7 +74,7 @@ let questions = [
         answer2: 'terminal / bash',
         answer3: 'for loops',
         answer4: 'console log',
-        correctAnswer: 3,
+        correctAnswer: 4,
     } 
 
 ];

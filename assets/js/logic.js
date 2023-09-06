@@ -1,7 +1,7 @@
 //VARIABLES
 let numberOfQuestions = 5;
-let timeLimit = (((numberOfQuestions * 10)+10));
-
+//let timeLimit = (((numberOfQuestions * 10)+10));
+let timeLimit = 60;
 let startQuizBtn = document.querySelector('#start');
 let timeEl = document.querySelector('#time');
 let startDiv = document.querySelector('#start-screen');
@@ -11,8 +11,9 @@ let questionTitle = document.querySelector('#question-title');
 let questionChoices = document.querySelector('#choices');
 let choiceBtns = [];
 let currentQuestion = 0;
-let correctAnswer = questions[currentQuestion].correctAnswer;
+let correctAnswer = 0;
 let feedbackEl =  document.querySelector('#feedback');
+let gameOver = false;
 
 //FUNCTIONS
 //timer
@@ -23,8 +24,12 @@ function timer() {
 
         if (timeLimit === 0) {
             clearInterval(timerInterval);
-            console.log(`time up!`); //TODO rm
-            //TODO jump to end
+            //console.log(`time up!`); //TODO rm
+            endGame();
+        }
+
+        if (gameOver == true) {
+            clearInterval(timerInterval);
         }
 
         timeLimit--;
@@ -36,6 +41,8 @@ function timer() {
 //populate question
 function populateQuestion() {
     i = currentQuestion;
+    correctAnswer = questions[currentQuestion].correctAnswer;
+    //console.log(`correct answer: ${correctAnswer}`); //TODO rm
     questionTitle.textContent = questions[i].question;
     questionChoices.innerHTML = '<button data-num="1" class="choice-btn">' + questions[i].answer1 + '</button>  <button data-num="2" class="choice-btn">' + questions[i].answer2 + '</button> <button data-num="3" class="choice-btn">' + questions[i].answer3 + '</button> <button data-num="4" class="choice-btn">' + questions[i].answer4 + '</button>';
     choiceBtns = document.querySelectorAll('.choice-btn');
@@ -55,7 +62,12 @@ function addChoiceListeners() {
             }
             else {
                 feedbackEl.textContent = "Wrong!";
-                timeLimit = timeLimit - 9;
+                if (timeLimit >= 9) {
+                    timeLimit = timeLimit - 9;
+                } else {
+                    timeLimit = 0;
+                    endGame();
+                }
             }
             if (currentQuestion < (numberOfQuestions - 1)) {
                 nextQuestion();
@@ -74,13 +86,15 @@ function nextQuestion() {
 
 //go to end page
 function endGame() {
-
+    questionDiv.classList.add('hide');
+    endDiv.classList.remove('hide');
+    gameOver = true;
 }
 
 //EVENT LISTENERS
 //start quiz/populate first question
 startQuizBtn.addEventListener('click', function() {
-    console.log(`start button pressed`); //TODO rm
+    //console.log(`start button pressed`); //TODO rm
     startDiv.classList.add('hide');
     questionDiv.classList.remove('hide');
     timer();
@@ -95,24 +109,24 @@ startQuizBtn.addEventListener('click', function() {
 //start timer - 60s
 //first question
 //buttons for answers
+//check answer
+//if wrong, decuct time, show message, proceed
+//if correct, show message?, proceed
+//5 questions
 
 //TODO
-//check answer
 
 
 
-//if wrong, decuct time, show message, proceed
 
-//if correct, show message?, proceed
 
-//5 questions
 
 //End screen with high score initial capture
 
 //High score page with clear button
 
 //tests
-console.log(correctAnswer);
+//console.log(correctAnswer); //TODO rm
 
 
 
