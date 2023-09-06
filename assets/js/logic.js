@@ -1,4 +1,4 @@
-//variables
+//VARIABLES
 let numberOfQuestions = 5;
 let timeLimit = (((numberOfQuestions * 10)+10));
 
@@ -9,9 +9,11 @@ let questionDiv = document.querySelector('#questions');
 let endDiv = document.querySelector('#end-screen');
 let questionTitle = document.querySelector('#question-title');
 let questionChoices = document.querySelector('#choices');
+let choiceBtns = [];
 let currentQuestion = 0;
+let correctAnswer = questions[currentQuestion].correctAnswer;
 
-//functions
+//FUNCTIONS
 //timer
 function timer() {
     let timerInterval = setInterval(function() {
@@ -33,17 +35,25 @@ function timer() {
 //populate question
 function populateQuestion() {
     i = currentQuestion;
-    d = i + 1;
-    let correctAnswer = questions[i].correctAnswer;
     questionTitle.textContent = questions[i].question;
-    questionChoices.innerHTML = '<button data-num="1">' + questions[i].answer1 + '</button>  <button data-num="2">' + questions[i].answer2 + '</button> <button data-num="3">' + questions[i].answer3 + '</button> <button data-num="4">' + questions[i].answer4 + '</button>';
+    questionChoices.innerHTML = '<button data-num="1" class="choice-btn">' + questions[i].answer1 + '</button>  <button data-num="2" class="choice-btn">' + questions[i].answer2 + '</button> <button data-num="3" class="choice-btn">' + questions[i].answer3 + '</button> <button data-num="4" class="choice-btn">' + questions[i].answer4 + '</button>';
+    choiceBtns = document.querySelectorAll('.choice-btn');
+    addChoiceListeners();
 }
 
-//navigate questions
+//add listeners to choice buttons
+function addChoiceListeners() {
+    console.log(`listeners`);
+    choiceBtns.forEach(function (j) {
+        j.addEventListener('click', function() {
+            console.log(`choice button pressed`); //TODO rm
+        });
+    });
+}
 
-//check answer
 
-//event listeners
+//EVENT LISTENERS
+//start quiz/populate first question
 startQuizBtn.addEventListener('click', function() {
     console.log(`start button pressed`); //TODO rm
     startDiv.classList.add('hide');
@@ -53,12 +63,18 @@ startQuizBtn.addEventListener('click', function() {
 });
 
 
+
+
+//DONE
 //start quiz screenr
 //start timer - 60s
-
 //first question
-
 //buttons for answers
+
+//TODO
+//check answer
+
+//navigate questions
 
 //if wrong, decuct time, show message, proceed
 
@@ -71,7 +87,7 @@ startQuizBtn.addEventListener('click', function() {
 //High score page with clear button
 
 //tests
-
+console.log(correctAnswer);
 
 
 
