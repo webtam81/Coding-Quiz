@@ -12,6 +12,7 @@ let questionChoices = document.querySelector('#choices');
 let choiceBtns = [];
 let currentQuestion = 0;
 let correctAnswer = questions[currentQuestion].correctAnswer;
+let feedbackEl =  document.querySelector('#feedback');
 
 //FUNCTIONS
 //timer
@@ -43,14 +44,38 @@ function populateQuestion() {
 
 //add listeners to choice buttons
 function addChoiceListeners() {
-    console.log(`listeners`);
+    //console.log(`listeners`); TODO rm
     choiceBtns.forEach(function (j) {
         j.addEventListener('click', function() {
-            console.log(`choice button pressed`); //TODO rm
+            //console.log(`choice button pressed`); //TODO rm
+            feedbackEl.classList.remove('hide');
+            let chosenAnswer = j.getAttribute('data-num');
+            if (chosenAnswer == correctAnswer) {
+                feedbackEl.textContent = "Correct!";
+            }
+            else {
+                feedbackEl.textContent = "Wrong!";
+                timeLimit = timeLimit - 9;
+            }
+            if (currentQuestion < (numberOfQuestions - 1)) {
+                nextQuestion();
+            } else {
+                endGame();
+            }
         });
     });
 }
 
+//navigate questions
+function nextQuestion() {  
+    currentQuestion++;
+    populateQuestion();
+}
+
+//go to end page
+function endGame() {
+
+}
 
 //EVENT LISTENERS
 //start quiz/populate first question
@@ -74,7 +99,7 @@ startQuizBtn.addEventListener('click', function() {
 //TODO
 //check answer
 
-//navigate questions
+
 
 //if wrong, decuct time, show message, proceed
 
