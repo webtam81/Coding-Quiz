@@ -9,6 +9,7 @@ let questionDiv = document.querySelector('#questions');
 let endDiv = document.querySelector('#end-screen');
 let questionTitle = document.querySelector('#question-title');
 let questionChoices = document.querySelector('#choices');
+let currentQuestion = 0;
 
 //functions
 //timer
@@ -30,13 +31,13 @@ function timer() {
 }
 
 //populate question
-//function populateQuestion() {
-    i = 0;
+function populateQuestion() {
+    i = currentQuestion;
+    d = i + 1;
+    let correctAnswer = questions[i].correctAnswer;
     questionTitle.textContent = questions[i].question;
-    questionChoices.innerHTML = '<button>' + questions[i].answer1 + '</button>  <button>' + questions[i].answer2 + '</button> <button>' + questions[i].answer3 + '</button> <button>' + questions[i].answer4 + '</button>';
-    //TODO - marker for correct answer. NOT IN CSS
-
-//}
+    questionChoices.innerHTML = '<button data-num="1">' + questions[i].answer1 + '</button>  <button data-num="2">' + questions[i].answer2 + '</button> <button data-num="3">' + questions[i].answer3 + '</button> <button data-num="4">' + questions[i].answer4 + '</button>';
+}
 
 //navigate questions
 
@@ -48,6 +49,7 @@ startQuizBtn.addEventListener('click', function() {
     startDiv.classList.add('hide');
     questionDiv.classList.remove('hide');
     timer();
+    populateQuestion();
 });
 
 
