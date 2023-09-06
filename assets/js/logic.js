@@ -1,11 +1,14 @@
 //variables
-let startQuizBtn = document.querySelector('#start');
-let timeEl = document.querySelector('#time');
 let numberOfQuestions = 5;
 let timeLimit = (((numberOfQuestions * 10)+10));
+
+let startQuizBtn = document.querySelector('#start');
+let timeEl = document.querySelector('#time');
 let startDiv = document.querySelector('#start-screen');
 let questionDiv = document.querySelector('#questions');
 let endDiv = document.querySelector('#end-screen');
+let questionTitle = document.querySelector('#question-title');
+let questionChoices = document.querySelector('#choices');
 
 //functions
 //timer
@@ -25,6 +28,19 @@ function timer() {
     }, 1000);
     //}, 10);//TODO rm
 }
+
+//populate question
+//function populateQuestion() {
+    i = 0;
+    questionTitle.textContent = questions[i].question;
+    questionChoices.innerHTML = '<button>' + questions[i].answer1 + '</button>  <button>' + questions[i].answer2 + '</button> <button>' + questions[i].answer3 + '</button> <button>' + questions[i].answer4 + '</button>';
+    //TODO - marker for correct answer. NOT IN CSS
+
+//}
+
+//navigate questions
+
+//check answer
 
 //event listeners
 startQuizBtn.addEventListener('click', function() {
