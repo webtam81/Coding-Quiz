@@ -104,8 +104,11 @@ startQuizBtn.addEventListener('click', function() {
     populateQuestion();
 });
 
+//clear feedback on mouse move
 
-
+document.addEventListener('mousemove', function() {
+    feedbackEl.classList.add('hide');
+});
 
 //DONE
 //start quiz screenr
