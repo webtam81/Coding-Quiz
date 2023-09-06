@@ -13,7 +13,9 @@ let choiceBtns = [];
 let currentQuestion = 0;
 let correctAnswer = 0;
 let feedbackEl =  document.querySelector('#feedback');
+let finalScoreEl = document.querySelector('#final-score');
 let gameOver = false;
+let highScore = document.querySelector('#initials');
 
 //FUNCTIONS
 //timer
@@ -89,6 +91,7 @@ function endGame() {
     questionDiv.classList.add('hide');
     endDiv.classList.remove('hide');
     gameOver = true;
+    finalScoreEl.textContent = timeLimit;
 }
 
 //EVENT LISTENERS
@@ -122,6 +125,8 @@ startQuizBtn.addEventListener('click', function() {
 
 
 //End screen with high score initial capture
+
+
 
 //High score page with clear button
 
