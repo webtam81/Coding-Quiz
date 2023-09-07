@@ -7,11 +7,16 @@ clearBtn.addEventListener('click', function() {
     localStorage.removeItem('highscore');
     //list of scores
     //localStorage.removeItem('highscores');
+    listScores();
 });
 
 function listScores() {
     //single score
-    highscoreEL.innerHTML = '<li>' + localStorage.getItem('highscore'); + '</li>';
+    if (localStorage.getItem('highscore')) {
+        highscoreEL.innerHTML = '<li>' + localStorage.getItem('highscore'); + '</li>';
+    } else {
+        highscoreEL.innerHTML = "";
+    }
     //list of scores
     //console.log(scoreArray.length);
     //highscoreEL.innerHTML = '<li>' + localStorage.getItem('highscores'); + '</li>';
