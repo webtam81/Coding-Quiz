@@ -92,6 +92,11 @@ function endGame() {
     endDiv.classList.remove('hide');
     gameOver = true;
     finalScoreEl.textContent = timeLimit;
+    saveScore();
+}
+
+function saveScore() {
+    localStorage.setItem('highscore', timeLimit)
 }
 
 //EVENT LISTENERS
@@ -105,7 +110,6 @@ startQuizBtn.addEventListener('click', function() {
 });
 
 //clear feedback on mouse move
-
 document.addEventListener('mousemove', function() {
     feedbackEl.classList.add('hide');
 });
