@@ -22,6 +22,8 @@ function listScores() {
         for (h = 0; h < scoreArray.length; h++) {
            highscoreEL.innerHTML = highscoreEL.innerHTML +'<li>' + scoreArray[h] + '</li>';
         }
+    } else {
+        highscoreEL.innerHTML = "";
     }
 }
 
