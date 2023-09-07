@@ -96,6 +96,7 @@ function endGame() {
     finalScoreEl.textContent = timeLimit;
 }
 
+//retrieve scores from localstorage if exists
 function getScores() {
     if (localStorage.getItem('highscores')) {
         scoreArray = JSON.parse(localStorage.getItem('highscores'));
@@ -103,10 +104,8 @@ function getScores() {
     }
 }
 
+//add new score to array then localstorage
 function saveScore() {
-    //single score
-    //localStorage.setItem('highscore', newScore);
-    //all scores
     getScores();
     scoreArray.push(newScore);
     console.log(scoreArray);
@@ -118,7 +117,6 @@ function saveScore() {
 //EVENT LISTENERS
 //start quiz/populate first question
 startQuizBtn.addEventListener('click', function() {
-    //console.log(`start button pressed`); //TODO rm
     startDiv.classList.add('hide');
     questionDiv.classList.remove('hide');
     timer();
@@ -130,18 +128,12 @@ document.addEventListener('mousemove', function() {
     feedbackEl.classList.add('hide');
 });
 
-//get initials
+//submit initials
 submitScoreBtn.addEventListener('click', function() {
     newScore = initialsInput.value.trim() + ' - ' + timeLimit;
     saveScore();
 });
 
-//TODO
-//End screen with high score initial capture
-//High score page with clear button
-
-//TESTS
-//console.log(correctAnswer); //TODO rm
 
 
 
