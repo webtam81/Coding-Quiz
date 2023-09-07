@@ -96,16 +96,22 @@ function endGame() {
     finalScoreEl.textContent = timeLimit;
 }
 
+function getScores() {
+    if (localStorage.getItem('highscores')) {
+        scoreArray = JSON.parse(localStorage.getItem('highscores'));
+        console.log(scoreArray);
+    }
+}
+
 function saveScore() {
     //single score
-    localStorage.setItem('highscore', newScore);
+    //localStorage.setItem('highscore', newScore);
     //all scores
-    //localStorage.setItem('highscore', timeLimit); //TODO rm
-    //scoreArray = JSON.parse(localStorage.getItem("highscores"));
-    //console.log(scoreArray);
-    //console.log(newScore);
-    //scoreArray.push(newScore);
-    //localStorage.setItem('highscores',JSON.stringify(scoreArray));
+    getScores();
+    scoreArray.push(newScore);
+    console.log(scoreArray);
+    console.log(newScore);
+    localStorage.setItem('highscores',JSON.stringify(scoreArray));
     window.location.href = "./highscores.html";
 }
 
